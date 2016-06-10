@@ -1103,9 +1103,10 @@ int LLStatsCommand::handleResponse(WifiEvent &reply)
                         if(mResultsParams.iface_stat) {
                             memcpy ( pIfaceStat, mResultsParams.iface_stat,
                                 sizeof(wifi_iface_stat));
-                            free (mResultsParams.iface_stat);
-                            mResultsParams.iface_stat = pIfaceStat;
+                            free(mResultsParams.iface_stat);
                         }
+                        mResultsParams.iface_stat = pIfaceStat;
+
                         wifi_peer_info *pPeerStats;
                         pIfaceStat->num_peers = numPeers;
 
