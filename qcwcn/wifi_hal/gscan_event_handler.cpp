@@ -1787,7 +1787,7 @@ int GScanCommandEventHandler::handleEvent(WifiEvent &event)
             wifi_request_id id;
             u32 resultsBufSize = 0;
             u32 numResults = 0;
-            u32 startingIndex, sizeOfObtainedResults;
+            u32 startingIndex;
             u32 ieDataSize = 0;
 
             if (!tbVendor[
