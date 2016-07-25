@@ -243,28 +243,24 @@ void hexdump(void *buf, u16 len)
 {
     int i=0;
     char *bytes = (char *)buf;
-
-    if (len) {
-        ALOGV("******HexDump len:%d*********", len);
-        for (i = 0; ((i + 7) < len); i+=8) {
-            ALOGV("%02x %02x %02x %02x   %02x %02x %02x %02x",
-                bytes[i], bytes[i+1],
-                bytes[i+2], bytes[i+3],
-                bytes[i+4], bytes[i+5],
-                bytes[i+6], bytes[i+7]);
-        }
-        if ((len - i) >= 4) {
-            ALOGV("%02x %02x %02x %02x",
-                bytes[i], bytes[i+1],
-                bytes[i+2], bytes[i+3]);
-            i+=4;
-        }
-        for (;i < len;i++) {
-            ALOGV("%02x", bytes[i]);
-        }
-        ALOGV("******HexDump End***********");
-    } else {
+    if (len == 0)
         return;
+    ALOGV("******HexDump len:%d*********", len);
+    for (i = 0; ((i + 7) < len); i+=8) {
+        ALOGV("%02x %02x %02x %02x   %02x %02x %02x %02x",
+              bytes[i], bytes[i+1],
+              bytes[i+2], bytes[i+3],
+              bytes[i+4], bytes[i+5],
+              bytes[i+6], bytes[i+7]);
+    }
+    if ((len - i) >= 4) {
+        ALOGV("%02x %02x %02x %02x",
+              bytes[i], bytes[i+1],
+              bytes[i+2], bytes[i+3]);
+        i+=4;
+    }
+    for (;i < len;i++) {
+        ALOGV("%02x", bytes[i]);
     }
 }
 
